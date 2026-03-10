@@ -125,13 +125,13 @@ custom_packages() {
     amlogic_api="https://api.github.com/repos/ophub/luci-app-amlogic/releases"
     #
     amlogic_plugin="luci-app-amlogic"
-    amlogic_plugin_down="$(curl -s ${amlogic_api} | grep "browser_download_url" | grep -oE "https.*${amlogic_plugin}.*.ipk" | head -n 1)"
+    amlogic_plugin_down="$(curl -s ${amlogic_api} | grep "browser_download_url" | grep -oE "https.*${amlogic_plugin}.*.apk" | head -n 1)"
     curl -fsSOJL ${amlogic_plugin_down}
     [[ "${?}" -eq "0" ]] || error_msg "[ ${amlogic_plugin} ] download failed!"
     echo -e "${INFO} The [ ${amlogic_plugin} ] is downloaded successfully."
     #
     amlogic_i18n_cn="luci-i18n-amlogic-zh-cn"
-    amlogic_i18n_down="$(curl -s ${amlogic_api} | grep "browser_download_url" | grep -oE "https.*${amlogic_i18n_cn}.*.ipk" | head -n 1)"
+    amlogic_i18n_down="$(curl -s ${amlogic_api} | grep "browser_download_url" | grep -oE "https.*${amlogic_i18n_cn}.*.apk" | head -n 1)"
     curl -fsSOJL ${amlogic_i18n_down}
     [[ "${?}" -eq "0" ]] || error_msg "[ ${amlogic_i18n_cn} ] download failed!"
     echo -e "${INFO} The [ ${amlogic_i18n_cn} ] is downloaded successfully."
@@ -185,7 +185,7 @@ rebuild_firmware() {
     my_packages="\
         acpid attr base-files bash bc blkid block-mount blockd bsdtar btrfs-progs busybox bzip2 \
         cgi-io chattr comgt comgt-ncm containerd coremark coreutils coreutils-base64 coreutils-nohup \
-        coreutils-truncate curl docker docker-compose dockerd dosfstools dumpe2fs e2freefrag e2fsprogs \
+        coreutils-truncate curl dosfstools dumpe2fs e2freefrag e2fsprogs \
         exfat-mkfs f2fs-tools f2fsck fdisk gawk getopt git gzip hostapd-common iconv iw iwinfo jq \
         jshn kmod-brcmfmac kmod-brcmutil kmod-cfg80211 kmod-mac80211 libjson-script liblucihttp \
         liblucihttp-lua losetup lsattr lsblk lscpu mkf2fs mount-utils openssl-util parted \
@@ -194,7 +194,7 @@ rebuild_firmware() {
         uclient-fetch uhttpd uhttpd-mod-ubus unzip uqmi usb-modeswitch uuidgen wget-ssl whereis \
         which wpad-basic wwan xfs-fsck xfs-mkfs xz xz-utils ziptool zoneinfo-asia zoneinfo-core zstd \
         \
-        luci luci-base luci-compat luci-i18n-base-zh-cn luci-lib-base luci-lib-docker \
+        luci luci-base luci-compat luci-i18n-base-zh-cn luci-lib-base \
         luci-lib-ip luci-lib-ipkg luci-lib-jsonc luci-lib-nixio luci-mod-admin-full luci-mod-network \
         luci-mod-status luci-mod-system luci-proto-3g luci-proto-ipip luci-proto-ipv6 \
         luci-proto-ncm luci-proto-openconnect luci-proto-ppp luci-proto-qmi luci-proto-relay \
